@@ -1,0 +1,27 @@
+{
+  "name": "tree-sitter-pxu",
+  "version": "0.1.0",
+  "description": "Tree-sitter parser for plainbox unit file, see also: https://github.com/canonical/checkbox .",
+  "main": "grammar.js",
+  "scripts": {
+    "test": "exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pseudocc/tree-sitter-pxu.git"
+  },
+  "keywords": [
+    "tree-sitter",
+    "plainbox-provider",
+    "checkbox-ng"
+  ],
+  "author": "Atlas Yu <atlas.yu@canonical.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pseudocc/tree-sitter-pxu/issues"
+  },
+  "homepage": "https://github.com/pseudocc/tree-sitter-pxu#readme",
+  "dependencies": {
+    "nan": "^2.17.0"
+  }
+}
