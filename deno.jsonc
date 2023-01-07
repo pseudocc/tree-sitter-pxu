@@ -1,0 +1,20 @@
+{
+  complierOptions: {
+    allowJs: true,
+    strict: true
+  },
+  lint: {
+    rules: {
+      tags: ['recommended']
+    }
+  },
+  fmt: {
+    options: {
+      useTabs: false,
+      lineWidth: 78,
+      indentWidth: 2,
+      singleQuote: true,
+      proseWrap: 'always'
+    }
+  }
+}

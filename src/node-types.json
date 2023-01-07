@@ -1,0 +1,47 @@
+[
+  {
+    "type": "hello",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "place",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "source_file",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "hello",
+          "named": true
+        },
+        {
+          "type": "place",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "china",
+    "named": false
+  },
+  {
+    "type": "hello",
+    "named": false
+  },
+  {
+    "type": "hi",
+    "named": false
+  },
+  {
+    "type": "world",
+    "named": false
+  }
+]

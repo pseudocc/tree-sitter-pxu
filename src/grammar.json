@@ -1,0 +1,56 @@
+{
+  "name": "pxu",
+  "rules": {
+    "source_file": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "hello"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "place"
+        }
+      ]
+    },
+    "hello": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "hello"
+        },
+        {
+          "type": "STRING",
+          "value": "hi"
+        }
+      ]
+    },
+    "place": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "world"
+        },
+        {
+          "type": "STRING",
+          "value": "china"
+        }
+      ]
+    }
+  },
+  "extras": [
+    {
+      "type": "PATTERN",
+      "value": "\\s"
+    }
+  ],
+  "conflicts": [],
+  "precedences": [],
+  "externals": [],
+  "inline": [],
+  "supertypes": []
+}
+
