@@ -1,0 +1,3 @@
+(greet) @keyword
+(place) @type
+
