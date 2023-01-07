@@ -6,11 +6,8 @@
 const options = grammar({
   name: 'pxu',
   rules: {
-    source_file: ($) =>
-      seq(
-        $.hello,
-        $.place,
-      ),
+    source_file: ($) => repeat($.greet),
+    greet: ($) => seq($.hello, $.place),
     hello: () => choice('hello', 'hi'),
     place: () => choice('world', 'china'),
   },

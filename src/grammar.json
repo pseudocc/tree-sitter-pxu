@@ -2,6 +2,13 @@
   "name": "pxu",
   "rules": {
     "source_file": {
+      "type": "REPEAT",
+      "content": {
+        "type": "SYMBOL",
+        "name": "greet"
+      }
+    },
+    "greet": {
       "type": "SEQ",
       "members": [
         {
