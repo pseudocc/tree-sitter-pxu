@@ -1,13 +1,13 @@
 (comment) @comment
 
-(raw_content) @string
-(section_name) @const.builtin
+(section_name) @field
 (section_delim) @punctuation.delimiter
-(identifier) @variable
+(identifier) @property
 (value_type) @type
+(plugin) @keyword
+(raw_content) @text
 
 [
- (plugin)
  (entry_point)
  (exporter_option)
- ] @keyword
+ ] @type.builtin
