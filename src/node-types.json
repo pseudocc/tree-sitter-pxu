@@ -1,32 +1,89 @@
 [
   {
-    "type": "greet",
+    "type": "section",
     "named": true,
-    "fields": {},
+    "fields": {
+      "bash_script": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "raw_content",
+            "named": true
+          }
+        ]
+      },
+      "json": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "raw_content",
+            "named": true
+          }
+        ]
+      },
+      "python_like": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "raw_content",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,
       "types": [
         {
-          "type": "hello",
+          "type": "entry_point",
           "named": true
         },
         {
-          "type": "place",
+          "type": "estimated_duration",
+          "named": true
+        },
+        {
+          "type": "exporter_option",
+          "named": true
+        },
+        {
+          "type": "flags",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "plugin",
+          "named": true
+        },
+        {
+          "type": "raw_content",
+          "named": true
+        },
+        {
+          "type": "section_delim",
+          "named": true
+        },
+        {
+          "type": "section_name",
+          "named": true
+        },
+        {
+          "type": "unit",
+          "named": true
+        },
+        {
+          "type": "value_type",
           "named": true
         }
       ]
     }
-  },
-  {
-    "type": "hello",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "place",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "source_file",
@@ -37,26 +94,67 @@
       "required": false,
       "types": [
         {
-          "type": "greet",
+          "type": "section",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "china",
+    "type": "value_type",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "bool",
     "named": false
   },
   {
-    "type": "hello",
+    "type": "comment",
+    "named": true
+  },
+  {
+    "type": "entry_point",
+    "named": true
+  },
+  {
+    "type": "estimated_duration",
+    "named": true
+  },
+  {
+    "type": "exporter_option",
+    "named": true
+  },
+  {
+    "type": "flags",
+    "named": true
+  },
+  {
+    "type": "identifier",
+    "named": true
+  },
+  {
+    "type": "natural",
     "named": false
   },
   {
-    "type": "hi",
-    "named": false
+    "type": "plugin",
+    "named": true
   },
   {
-    "type": "world",
-    "named": false
+    "type": "raw_content",
+    "named": true
+  },
+  {
+    "type": "section_delim",
+    "named": true
+  },
+  {
+    "type": "section_name",
+    "named": true
+  },
+  {
+    "type": "unit",
+    "named": true
   }
 ]

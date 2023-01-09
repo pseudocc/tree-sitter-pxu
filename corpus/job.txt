@@ -1,0 +1,38 @@
+====================
+Simple
+====================
+
+# this is comment
+id: non-sense
+command:
+  #/bin/sh
+  echo "hello world"
+  echo "goodbye world"
+
+id:
+  which-gcc
+# comment in between
+command:
+  which gcc
+
+--------------------
+
+(source_file
+  (comment)
+  (section
+    (section_name)
+    (section_delim)
+    (identifier))
+  (section
+    (section_name)
+    (section_delim)
+    bash_script: (raw_content))
+  (section
+    (section_name)
+    (section_delim)
+    (identifier))
+  (comment)
+  (section
+    (section_name)
+    (section_delim)
+    bash_script: (raw_content)))

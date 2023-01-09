@@ -5,58 +5,797 @@
       "type": "REPEAT",
       "content": {
         "type": "SYMBOL",
-        "name": "greet"
+        "name": "_section"
       }
     },
-    "greet": {
+    "_section": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "hello"
+          "name": "_section_begin"
         },
         {
           "type": "SYMBOL",
-          "name": "place"
+          "name": "section"
         }
       ]
     },
-    "hello": {
+    "section_name": {
+      "type": "PATTERN",
+      "value": "[a-z_\\-]+"
+    },
+    "section_name_id_like": {
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "id"
+          },
+          {
+            "type": "STRING",
+            "value": "category_id"
+          },
+          {
+            "type": "STRING",
+            "value": "user"
+          },
+          {
+            "type": "STRING",
+            "value": "template-resource"
+          },
+          {
+            "type": "STRING",
+            "value": "template-engine"
+          },
+          {
+            "type": "STRING",
+            "value": "resource-key"
+          },
+          {
+            "type": "STRING",
+            "value": "os-id"
+          }
+        ]
+      }
+    },
+    "section_name_python_like": {
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "requires"
+          },
+          {
+            "type": "STRING",
+            "value": "imports"
+          },
+          {
+            "type": "STRING",
+            "value": "template-filter"
+          }
+        ]
+      }
+    },
+    "section_name_id_list": {
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "depends"
+          },
+          {
+            "type": "STRING",
+            "value": "after"
+          },
+          {
+            "type": "STRING",
+            "value": "salvages"
+          },
+          {
+            "type": "STRING",
+            "value": "environ"
+          },
+          {
+            "type": "STRING",
+            "value": "include"
+          },
+          {
+            "type": "STRING",
+            "value": "mandatory_include"
+          },
+          {
+            "type": "STRING",
+            "value": "bootstrap_include"
+          },
+          {
+            "type": "STRING",
+            "value": "nested_part"
+          },
+          {
+            "type": "STRING",
+            "value": "exculde"
+          }
+        ]
+      }
+    },
+    "section_name_i18n": {
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "PATTERN",
+            "value": "_?summary"
+          },
+          {
+            "type": "PATTERN",
+            "value": "_?purpose"
+          },
+          {
+            "type": "PATTERN",
+            "value": "_?name"
+          },
+          {
+            "type": "PATTERN",
+            "value": "_?description"
+          },
+          {
+            "type": "PATTERN",
+            "value": "_?prompt"
+          }
+        ]
+      }
+    },
+    "section_name_any": {
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "verification"
+          },
+          {
+            "type": "STRING",
+            "value": "category-overrides"
+          },
+          {
+            "type": "STRING",
+            "value": "file_extension"
+          },
+          {
+            "type": "STRING",
+            "value": "data"
+          },
+          {
+            "type": "STRING",
+            "value": "value-units"
+          },
+          {
+            "type": "STRING",
+            "value": "os-version-id"
+          },
+          {
+            "type": "STRING",
+            "value": "Depends"
+          },
+          {
+            "type": "STRING",
+            "value": "Suggests"
+          },
+          {
+            "type": "STRING",
+            "value": "Recommends"
+          }
+        ]
+      }
+    },
+    "section_delim": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": ":"
+        }
+      }
+    },
+    "section": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "section_name_python_like"
+              },
+              "named": true,
+              "value": "section_name"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "section_delim"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "python_like",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "raw_content"
+                  }
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "command"
+              },
+              "named": true,
+              "value": "section_name"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "section_delim"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "bash_script",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "raw_content"
+                  }
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "value-type"
+              },
+              "named": true,
+              "value": "section_name"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "section_delim"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "value_type"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "PATTERN",
+                "value": "_?siblings"
+              },
+              "named": true,
+              "value": "section_name"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "section_delim"
+            },
+            {
+              "type": "FIELD",
+              "name": "json",
+              "content": {
+                "type": "SYMBOL",
+                "name": "raw_content"
+              }
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "unit"
+              },
+              "named": true,
+              "value": "section_name"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "section_delim"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "unit"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "plugin"
+              },
+              "named": true,
+              "value": "section_name"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "section_delim"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "plugin"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "flags"
+              },
+              "named": true,
+              "value": "section_name"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "section_delim"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "flags"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "estimated_duration"
+              },
+              "named": true,
+              "value": "section_name"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "section_delim"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "estimated_duration"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "entry_point"
+              },
+              "named": true,
+              "value": "section_name"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "section_delim"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "entry_point"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "options"
+              },
+              "named": true,
+              "value": "section_name"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "section_delim"
+            },
+            {
+              "type": "REPEAT1",
+              "content": {
+                "type": "SYMBOL",
+                "name": "exporter_option"
+              }
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "section_name_id_like"
+              },
+              "named": true,
+              "value": "section_name"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "section_delim"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "identifier"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "section_name_i18n"
+              },
+              "named": true,
+              "value": "section_name"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "section_delim"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "raw_content"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "value_type": {
       "type": "CHOICE",
       "members": [
         {
           "type": "STRING",
-          "value": "hello"
+          "value": "bool"
         },
         {
           "type": "STRING",
-          "value": "hi"
+          "value": "natural"
         }
       ]
     },
-    "place": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "world"
-        },
-        {
-          "type": "STRING",
-          "value": "china"
-        }
-      ]
+    "estimated_duration": {
+      "type": "PATTERN",
+      "value": "(\\d+h)?[: ]*(\\d+m?)[: ]*(\\d+s)?"
+    },
+    "flags": {
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "reset-locale"
+          },
+          {
+            "type": "STRING",
+            "value": "win32"
+          },
+          {
+            "type": "STRING",
+            "value": "noreturn"
+          },
+          {
+            "type": "STRING",
+            "value": "explicit-fail"
+          },
+          {
+            "type": "STRING",
+            "value": "has-leftovers"
+          },
+          {
+            "type": "STRING",
+            "value": "simple"
+          },
+          {
+            "type": "STRING",
+            "value": "preserve-cwd"
+          },
+          {
+            "type": "STRING",
+            "value": "fail-on-resource"
+          },
+          {
+            "type": "STRING",
+            "value": "also-after-suspend"
+          },
+          {
+            "type": "STRING",
+            "value": "also-after-suspend-manual"
+          },
+          {
+            "type": "STRING",
+            "value": "cachable"
+          }
+        ]
+      }
+    },
+    "entry_point": {
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "jinja2"
+          },
+          {
+            "type": "STRING",
+            "value": "text"
+          },
+          {
+            "type": "STRING",
+            "value": "xlsx"
+          },
+          {
+            "type": "STRING",
+            "value": "json"
+          },
+          {
+            "type": "STRING",
+            "value": "rfc822"
+          }
+        ]
+      }
+    },
+    "exporter_option": {
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "with-io-log"
+          },
+          {
+            "type": "STRING",
+            "value": "squash-io-log"
+          },
+          {
+            "type": "STRING",
+            "value": "flatten-io-log"
+          },
+          {
+            "type": "STRING",
+            "value": "with-run-list"
+          },
+          {
+            "type": "STRING",
+            "value": "with-job-list"
+          },
+          {
+            "type": "STRING",
+            "value": "with-resource-map"
+          },
+          {
+            "type": "STRING",
+            "value": "with-job-defs"
+          },
+          {
+            "type": "STRING",
+            "value": "with-attachments"
+          },
+          {
+            "type": "STRING",
+            "value": "with-comments"
+          },
+          {
+            "type": "STRING",
+            "value": "with-job-via"
+          },
+          {
+            "type": "STRING",
+            "value": "with-job-hash"
+          },
+          {
+            "type": "STRING",
+            "value": "with-category-map"
+          },
+          {
+            "type": "STRING",
+            "value": "with-certification-status"
+          },
+          {
+            "type": "STRING",
+            "value": "machine-json"
+          },
+          {
+            "type": "STRING",
+            "value": "with-sys-info"
+          },
+          {
+            "type": "STRING",
+            "value": "with-summary"
+          },
+          {
+            "type": "STRING",
+            "value": "with-job-description"
+          },
+          {
+            "type": "STRING",
+            "value": "with-text-attachments"
+          },
+          {
+            "type": "STRING",
+            "value": "with-unit-categories"
+          },
+          {
+            "type": "STRING",
+            "value": "without-session-desc"
+          }
+        ]
+      }
+    },
+    "plugin": {
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "manual"
+          },
+          {
+            "type": "STRING",
+            "value": "shell"
+          },
+          {
+            "type": "STRING",
+            "value": "user-interact"
+          },
+          {
+            "type": "STRING",
+            "value": "user-interact-verify"
+          },
+          {
+            "type": "STRING",
+            "value": "attachment"
+          },
+          {
+            "type": "STRING",
+            "value": "resource"
+          }
+        ]
+      }
+    },
+    "unit": {
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "job"
+          },
+          {
+            "type": "STRING",
+            "value": "category"
+          },
+          {
+            "type": "STRING",
+            "value": "test plain"
+          },
+          {
+            "type": "STRING",
+            "value": "template"
+          },
+          {
+            "type": "STRING",
+            "value": "exporter"
+          },
+          {
+            "type": "STRING",
+            "value": "manifest entry"
+          }
+        ]
+      }
+    },
+    "identifier": {
+      "type": "PATTERN",
+      "value": "[^\\s\\t\\n]+"
     }
   },
   "extras": [
     {
       "type": "PATTERN",
-      "value": "\\s"
+      "value": "[\\s\\t]"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "comment"
     }
   ],
   "conflicts": [],
   "precedences": [],
-  "externals": [],
+  "externals": [
+    {
+      "type": "SYMBOL",
+      "name": "_section_begin"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "comment"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "raw_content"
+    }
+  ],
   "inline": [],
   "supertypes": []
 }
