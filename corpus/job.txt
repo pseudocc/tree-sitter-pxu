@@ -10,7 +10,7 @@ command:
   echo "goodbye world"
 
 id:
-  which-gcc
+  which-gcc-{{ ubuntu }}
 # comment in between
 command:
   which gcc

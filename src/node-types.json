@@ -1,5 +1,10 @@
 [
   {
+    "type": "identifier",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "section",
     "named": true,
     "fields": {
@@ -127,10 +132,6 @@
   },
   {
     "type": "flags",
-    "named": true
-  },
-  {
-    "type": "identifier",
     "named": true
   },
   {

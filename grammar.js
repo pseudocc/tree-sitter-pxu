@@ -140,6 +140,11 @@ const options = grammar({
           $.identifier,
         ),
         seq(
+          alias($.section_name_id_list, $.section_name),
+          $.section_delim,
+          repeat1($.identifier),
+        ),
+        seq(
           alias($.section_name_i18n, $.section_name),
           $.section_delim,
           optional($.raw_content),
@@ -218,7 +223,14 @@ const options = grammar({
         'manifest entry',
       )),
 
-    identifier: ($) => /[^\s\t\n]+/,
+    identifier: $ => choice($._identifier, $._template_identifier),
+    _identifier: ($) => /[^\s\t\n]+/,
+    _template_identifier: ($) =>
+      seq(
+        /[^\s\t\n]*\{\{\s?/,
+        $._identifier,
+        /\s?\}\}[^\s\t\n]*/,
+      ),
   },
 });
 
