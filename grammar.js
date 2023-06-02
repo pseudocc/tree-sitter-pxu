@@ -153,7 +153,15 @@ const options = grammar({
 
     value_type: ($) => choice('bool', 'natural'),
 
-    estimated_duration: ($) => /(\d+h)?[: ]*(\d+m?)[: ]*(\d+s)?/,
+    estimated_duration: ($) =>
+      token(choice(
+        seq(
+          optional(/\d+\s?h[:\s]?/),
+          optional(/\d+\s?m[:\s]?/),
+          optional(/\d+\s?s/)
+        ),
+        /(\d*\.)?\d+/
+      )),
 
     flags: ($) =>
       token(choice(
