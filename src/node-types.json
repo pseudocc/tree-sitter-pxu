@@ -1,5 +1,10 @@
 [
   {
+    "type": "estimated_duration",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "identifier",
     "named": true,
     "fields": {}
@@ -120,10 +125,6 @@
   },
   {
     "type": "entry_point",
-    "named": true
-  },
-  {
-    "type": "estimated_duration",
     "named": true
   },
   {
