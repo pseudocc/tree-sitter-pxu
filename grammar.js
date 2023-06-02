@@ -222,7 +222,7 @@ const options = grammar({
       token(choice(
         'job',
         'category',
-        'test plain',
+        'test plan',
         'template',
         'exporter',
         'manifest entry',
