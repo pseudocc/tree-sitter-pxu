@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-pxu",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Tree-sitter parser for plainbox unit files, see also: https://github.com/canonical/checkbox .",
   "main": "grammar.js",
   "scripts": {
